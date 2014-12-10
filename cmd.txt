@@ -1,0 +1,11 @@
+Thu Jul 03 13:07:32 EDT 2014
+EEE MMM dd HH:mm:ss z yyyy 
+
+// facet by days
+http://localhost:5621/solr/collection1/select?q=*.*&fl=fromdisp%2C+conv%2C+mtm&wt=xml&indent=true&facet=true&facet.date=mtm&facet.date.start=NOW/DAY-30DAYS&facet.date.end=NOW/DAY%2B30DAYS&facet.date.gap=%2B1DAY
+
+// group by days
+http://localhost:5621/solr/select?q=*.*&fl=mtm&group=true&group.func=floor(div(ms(mtm),mul(24,mul(60,mul(60,1000)))))&group.limit=10&group.ngroups=true&group.sort=mtm%20asc
+
+// check email content
+http://localhost:5621/viewsourceservlet/?docid=b842949c8ede77d5eccb46a7c24aa8fd&returntype=xml
